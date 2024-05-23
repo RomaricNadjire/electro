@@ -1,8 +1,14 @@
 <?php
 
+use App\Models\Avis;
 use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
-Route::view('/', 'welcome');
+
+Route::get('/', function (){
+    $avis = Avis::with('user')->get();
+    return view('app', compact('avis'));
+})->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -11,5 +17,4 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
-
 require __DIR__.'/auth.php';
