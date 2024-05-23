@@ -127,7 +127,7 @@
                             <span class="text-2xl flex items-center">
                                 <ion-icon name="mail-outline"></ion-icon>
                             </span>
-                            voixduclient@gmail.com
+                            {{env('APP_NAME')}}@gmail.com
                         </a>
                     </li>
                 </div>
@@ -138,9 +138,28 @@
             </div>
         </section>
         <section class="text-center">
-            <p>Copyright &copy; 2024 {{ env('APP_NAME') }}</p>
+            <p>Copyright &copy; 2024 <a href="" class="font-bold">{{ env('APP_NAME') }}</a></p>
         </section>
+        <span class="hidden rounded-full h-10 w-10 border border-slate-500 bg-slate-400 items-center justify-center shadow-xl fixed top-[90%] right-4 text-lg font-bold" onclick="scrollToTop()"><ion-icon name="arrow-up-outline"></ion-icon></span>
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        function scrollToTop(){
+            document.documentElement.scrollTop = 0; // Pour les navigateurs Chrome, Firefox, IE et Opera
+        }
+
+        window.onscroll = function() {
+            var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+            var btnScrollToTop = document.querySelector('span[onclick="scrollToTop()"]');
+            
+            if (scrollPosition > 0) {
+                btnScrollToTop.classList.remove('hidden');
+                btnScrollToTop.classList.add('flex');
+            } else {
+                btnScrollToTop.classList.add('hidden');
+                btnScrollToTop.classList.remove('flex');
+            }
+        };
+    </script>
 </x-layout>

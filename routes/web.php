@@ -6,7 +6,7 @@ use Livewire\Volt\Volt;
 
 
 Route::get('/', function (){
-    $avis = Avis::with('user')->get();
+    $avis = Avis::with('user')->orderBy('created_at', 'DESC')->get();
     return view('app', compact('avis'));
 })->name('home');
 

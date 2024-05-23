@@ -9,17 +9,18 @@ class MailForm extends Component
 {
     #[Validate(['required', 'min:3', 'alpha'])]
     public $message = '';
-    
+
     #[Validate(['required', 'min:3', 'email'])]
     public $email;
 
-    public function mount(){
-        $this->email = auth()->user()->email;
+    public function mount()
+    {
+        $this->email = auth()->user() ? auth()->user()->email : '';
     }
 
-    public function save(){
+    public function save()
+    {
         $this->validate();
-
     }
 
     public function render()
