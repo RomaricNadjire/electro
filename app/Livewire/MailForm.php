@@ -2,12 +2,14 @@
 
 namespace App\Livewire;
 
+use App\Mail\MailToUs;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class MailForm extends Component
 {
-    #[Validate(['required', 'min:3', 'alpha'])]
+    #[Validate(['required', 'min: 15'])]
     public $message = '';
 
     #[Validate(['required', 'min:3', 'email'])]
@@ -21,6 +23,13 @@ class MailForm extends Component
     public function save()
     {
         $this->validate();
+        if(Mail::to(env('ADMIN_EMAIL'))->send(new MailToUs($this->email, $this->message))){
+            $this->clearForm();
+        }
+    }
+
+    public function clearForm(){
+        $this->message = '';
     }
 
     public function render()

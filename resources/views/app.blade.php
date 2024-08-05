@@ -4,8 +4,6 @@
             <h1 class="font-bold max-md:text-4xl text-6xl text-gray-700">elec<span class="text-primary">tro</span></h1>
             <p class="mx-auto max-w-[80ch] text-xl">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis et beatae quae iure assumenda sunt
-                deleniti pariatur voluptates enim doloribus? Architecto doloribus error fugit vel voluptates quidem quia
-                reprehenderit dolorum?
             </p>
             <div class="flex items-center justify-center gap-2 md:gap-4 lg:gap-6 max-lg:scale-75">
                 @auth
@@ -54,11 +52,11 @@
                     obcaecati rem deserunt, incidunt debitis quam exercitationem iure?</p>
             </div>
             <div class="min-h-32 rounded-md max-md:order-3 flex justify-center items-center">
-                <img src="https://img.freepik.com/photos-premium/travailleur-centrale-electrique-alternative-uniforme-nettoyant-panneaux-solaires-balai-bel-afro-americain-s-occupant-equipement_255667-61620.jpg?w=1380"
+                <img src="https://i.pinimg.com/564x/62/c2/9e/62c29e2fc39d518055ba9581ac4db2c9.jpg"
                     alt="">
             </div>
             <div class="min-h-32 rounded-md max-md:order-5 flex justify-center items-center">
-                <img src="https://img.freepik.com/photos-gratuite/man-panneau-solaire_1048-1647.jpg?w=1060&t=st=1716370612~exp=1716371212~hmac=74a00c32c7be17f1d9b2149c1b0ddf1c7dcb69ec83167db80d6b8024e1bdfa31"
+                <img src="https://i.pinimg.com/564x/7f/07/19/7f07191d4893d6eeb35a244b26280159.jpg"
                     alt="">
             </div>
             <div class="text-card max-md:order-6">
@@ -72,7 +70,7 @@
     </section>
     <section class="p-4" id="avis">
         <h1 class="text-center text-lg font-bold uppercase text-gray-800">Les avis sur nous</h1>
-        <div class="flex overflow-auto gap-4 p-4 lg:px-8">
+        <div class="flex overflow-auto gap-4 p-4 lg:px-8" id="avis-card-container">
             @foreach ($avis as $item)
                 <livewire:avis-card :item="$item"/>
             @endforeach
@@ -82,7 +80,7 @@
     <footer class="p-4 lg:p-8" id="contact">
         <x-application-logo route="#footer" />
         <section class="grid grid-cols-1 md:grid-cols-3 p-4 pb-0">
-            <div class="">
+            <div class="max-md:order-2">
                 <h2 class="font-medium text-lg">Suivez nous</h2>
                 <div class="grid grid-cols-1 items-center gap-4 p-4 w-full border-b-[.1px] md:border-b-0 mt-1">
                     <li class="list-none flex items-center justify-start">
@@ -103,7 +101,7 @@
                     </li>
                 </div>
             </div>
-            <div class="">
+            <div class="max-md:order-3">
                 <h2 class="font-medium text-lg">Contact</h2>
                 <div class="grid grid-cols-1 items-center gap-4 p-4 w-full border-b-[.1px] md:border-b-0 mt-1">
                     <li class="list-none flex items-center justify-start">
@@ -132,7 +130,7 @@
                     </li>
                 </div>
             </div>
-            <div class="">
+            <div class="max-md:order-1">
                 <h2 class="text-lg font-medium">Contacter nous par mail</h2>
                 <livewire:mail-form />
             </div>
@@ -161,5 +159,32 @@
                 btnScrollToTop.classList.remove('flex');
             }
         };
+
+        function scrolElementToRight(complaintsContainer){
+            let interval1 = setInterval(() => {
+                complaintsContainer.scrollLeft+=100;   
+                
+                if(complaintsContainer.scrollLeft+window.innerWidth>=complaintsContainer.scrollWidth){
+                    clearInterval(interval1);
+                    scrollElementToLeft(complaintsContainer);
+                }
+            }, 1000);
+        }
+
+        function scrollElementToLeft(complaintsContainer){
+            let interval1 = setInterval(() => {
+                complaintsContainer.scrollLeft-=100;   
+                
+                if(complaintsContainer.scrollLeft<=0){
+                    clearInterval(interval1);
+                    scrolElementToRight(complaintsContainer)
+                }
+            }, 1000);
+        }
+
+        
+        let element = document.getElementById('avis-card-container');
+
+        scrolElementToRight(element);
     </script>
 </x-layout>

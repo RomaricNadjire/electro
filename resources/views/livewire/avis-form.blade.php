@@ -17,7 +17,7 @@
                 </div>
             @endif
             <textarea
-                class="mt-1 block w-full p-2.5 border border-gray-300 rounded-md shadow-sm focus:border-[#6A64F1] focus:ring-[#6A64F1]"
+                class="mt-1 block w-full p-2.5 border border-gray-300 rounded-md shadow-sm focus:border-[#65B741] focus:ring-[#65B741]"
                 id="contenu" wire:model="contenu" rows="3">
             </textarea>
             @error('contenu')
@@ -25,6 +25,6 @@
             @enderror
         </div>
         <button type="submit"
-            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-[#6A64F1] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#6A64F1]">Soumettre</button>
+            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-[#65B741] hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#65B741]">Soumettre</button>
     </form>
 </div>

@@ -11,7 +11,7 @@
        
         @vite('resources/css/app.css', 'resources/js/app.js')
     </head>
-    <body class="max-w-[100dvw] overflow-x-hidden">
+    <body class="max-w-[100dvw] overflow-x-hidden relative">
         <nav class="navigation" id="navigation">
             <div class="logo-container flex items-center justify-center max-lg:justify-between max-lg:w-full w-min text-gray-700">
                 <x-application-logo route="home"/>
